@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cod_cliente: 1
+  ddd_tel_1: MyString
+  tel_1: MyString
+  ddd_tel_2: MyString
+  tel_2: MyString
+  ddd_tel_3: MyString
+  tel_3: MyString
+  nome_contato: MyString
+  cargo_contato: MyString
+  email_contato: MyString
+  senha: MyString
+  data_criacao: 2015-02-24
+  status: false
+  last_update: 2015-02-24
+
+two:
+  cod_cliente: 1
+  ddd_tel_1: MyString
+  tel_1: MyString
+  ddd_tel_2: MyString
+  tel_2: MyString
+  ddd_tel_3: MyString
+  tel_3: MyString
+  nome_contato: MyString
+  cargo_contato: MyString
+  email_contato: MyString
+  senha: MyString
+  data_criacao: 2015-02-24
+  status: false
+  last_update: 2015-02-24

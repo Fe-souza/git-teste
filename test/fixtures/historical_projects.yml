@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_projeto: 1
+  user_id_admin: MyString
+  tipo: 
+  descricao: MyText
+  visivel_cliente: false
+  inserido_cliente: false
+  data_criacao: 2015-02-25
+
+two:
+  id_projeto: 1
+  user_id_admin: MyString
+  tipo: 
+  descricao: MyText
+  visivel_cliente: false
+  inserido_cliente: false
+  data_criacao: 2015-02-25
