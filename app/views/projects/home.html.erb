@@ -1,0 +1,30 @@
+<% if session[:id] %>
+ <div id='chart'></div>
+  <%#= render_chart @chart, 'project' %>	
+  <div class="container">
+	  
+		<div class="coluna-6">
+		  <Strong>Projetos por status</Strong>
+		  <%= pie_chart Project.where(:cod_cliente => session[:cod_cliente]).group(:status).count %>
+
+		</div>
+		<div class="coluna-6">
+			<Strong >Projetos por status</Strong>
+			<%= pie_chart Project.joins("INNER JOIN categorias ON projetos.id_categoria = categorias.id_categoria").where(:cod_cliente => session[:cod_cliente]).group(:nome_categoria).count %>
+		</div>	
+	
+		<div class="coluna-12">
+			<div id="conteudo_icos_home" align="center">
+			    <div id="icos_home">
+			        <div id="link_enviar_briefing"><%= link_to image_tag("http://www.kzulopropaganda.com.br/gerenciamentojobs/images/nada.png",class: "img_home"), new_project_path  %></div>
+			        <div id="link_hist_projetos"><%= link_to image_tag("http://www.kzulopropaganda.com.br/gerenciamentojobs/images/nada.png", class: "img_home") , projects_path  %></div>
+			    </div>
+			</div>
+		</div>	
+
+</div>
+<% else 
+
+	redirect_to "/autenticar" if !session[:id]
+
+end %>

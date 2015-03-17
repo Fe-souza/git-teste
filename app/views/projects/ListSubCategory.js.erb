@@ -1,0 +1,9 @@
+$(document).ready(function() {  
+//	alert('<%= @t%>')
+	 $('#project_id_sub_categoria').empty();
+	<% @SubCategory.each do |i| %>
+	  $('#project_id_sub_categoria').append($('<option value="<%= i.id_sub_categoria %>"><%= i.nome_subcategoria %></option>'));
+
+	<% end %>
+
+})

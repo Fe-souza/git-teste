@@ -1,0 +1,2 @@
+module ImagesProjectsHelper
+end

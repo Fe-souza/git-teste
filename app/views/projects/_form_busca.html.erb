@@ -1,0 +1,41 @@
+<table class="tables">
+  <thead>
+    <tr>
+      <th>Titulo</th> 
+      <th>Data inicial</th>
+      <th>Data final</th>    
+      <th>Solicitante</th>
+      <th>Data prazo</th>
+      <th>Status</th>  
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @list_projects.each do |project| %>
+      <tr>
+        <td><%= project.titulo %></td>
+        <td>
+
+          <% if not(project.data_inicial =="" or project.data_inicial.nil? ) %>   
+               <%= project.data_inicial.to_time.strftime("%d/%m/%Y") %>
+          <% end %>
+
+        </td>
+        <td>
+          <% if not(project.data_final =="" or project.data_final.nil?) %>          
+              <%= project.data_final.to_time.strftime("%d/%m/%Y") %>
+          <% end %>
+        </td>  
+        <td><%= project.solicitante %></td>
+        <td>
+          <% if not(project.data_prazo =="" or project.data_prazo.nil?) %>  
+              <%= project.data_prazo.to_time.strftime("%d/%m/%Y") %>
+          <% end %>
+        </td>
+        <td><%= project.status %></td>      
+        <td><%= link_to 'Detalhes', project , class:"button"%></td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>

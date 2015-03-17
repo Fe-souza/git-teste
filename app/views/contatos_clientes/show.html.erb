@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cod cliente:</strong>
+  <%= @contatos_cliente.cod_cliente %>
+</p>
+
+<p>
+  <strong>Ddd tel 1:</strong>
+  <%= @contatos_cliente.ddd_tel_1 %>
+</p>
+
+<p>
+  <strong>Tel 1:</strong>
+  <%= @contatos_cliente.tel_1 %>
+</p>
+
+<p>
+  <strong>Ddd tel 2:</strong>
+  <%= @contatos_cliente.ddd_tel_2 %>
+</p>
+
+<p>
+  <strong>Tel 2:</strong>
+  <%= @contatos_cliente.tel_2 %>
+</p>
+
+<p>
+  <strong>Ddd tel 3:</strong>
+  <%= @contatos_cliente.ddd_tel_3 %>
+</p>
+
+<p>
+  <strong>Tel 3:</strong>
+  <%= @contatos_cliente.tel_3 %>
+</p>
+
+<p>
+  <strong>Nome contato:</strong>
+  <%= @contatos_cliente.nome_contato %>
+</p>
+
+<p>
+  <strong>Cargo contato:</strong>
+  <%= @contatos_cliente.cargo_contato %>
+</p>
+
+<p>
+  <strong>Email contato:</strong>
+  <%= @contatos_cliente.email_contato %>
+</p>
+
+<p>
+  <strong>Senha:</strong>
+  <%= @contatos_cliente.senha %>
+</p>
+
+<p>
+  <strong>Data criacao:</strong>
+  <%= @contatos_cliente.data_criacao %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @contatos_cliente.status %>
+</p>
+
+<p>
+  <strong>Last update:</strong>
+  <%= @contatos_cliente.last_update %>
+</p>
+
+<%= link_to 'Edit', edit_contatos_cliente_path(@contatos_cliente) %> |
+<%= link_to 'Back', contatos_clientes_path %>

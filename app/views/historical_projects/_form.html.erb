@@ -1,0 +1,45 @@
+<%= form_for(@historical_project) do |f| %>
+  <% if @historical_project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@historical_project.errors.count, "error") %> prohibited this historical_project from being saved:</h2>
+
+      <ul>
+      <% @historical_project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id_projeto %><br>
+    <%= f.number_field :id_projeto %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id_admin %><br>
+    <%= f.text_field :user_id_admin %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo %><br>
+    <%= f.text_field :tipo %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_area :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :visivel_cliente %><br>
+    <%= f.check_box :visivel_cliente %>
+  </div>
+  <div class="field">
+    <%= f.label :inserido_cliente %><br>
+    <%= f.check_box :inserido_cliente %>
+  </div>
+  <div class="field">
+    <%= f.label :data_criacao %><br>
+    <%= f.date_select :data_criacao %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

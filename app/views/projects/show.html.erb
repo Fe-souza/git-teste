@@ -1,0 +1,96 @@
+
+<h1>Detalhes do Projeto</h1><%= link_to 'Voltar', projects_path, class:"button" %>
+<div class="container">
+  
+  <div class="coluna-6">
+    <strong>Dados do Projeto</strong>
+    <p>
+      <strong>Data cadastro:</strong>
+      <%= @project.data_criacao.to_time.strftime("%d/%m/%Y") %>
+    </p>
+    <p>  
+      <strong>Categoria:</strong>
+      <%= @project.id_categoria %>
+    </p>
+    <p>
+      <strong>Veiculo:</strong>
+      <%= @project.veiculo %>
+    </p> 
+    <p>
+      <strong>Linguagem:</strong>
+      <%= @project.linguagem %>
+    </p>
+    <p>
+      <strong>Publico alvo:</strong>
+      <%= @project.publico_alvo %>
+    </p>
+    <br>  
+  </div>
+  <div class="coluna-6">
+  <br>
+    <p>
+      <strong>Prazo:</strong>
+      <%= @project.data_prazo.to_time.strftime("%d/%m/%Y") %>
+    </p>   
+     <p>
+      <strong>Sub categoria:</strong>
+      <%= @project.id_sub_categoria %>
+    </p>
+    <p>
+      <strong>Formato:</strong>
+      <%= @project.formato %>
+    </p>
+    <p>
+      <strong>Objetivo:</strong>
+      <%= @project.objetivo %>
+    </p>
+    <p>
+      <strong>Inf obrgatorias:</strong>
+      <%= @project.inf_obrigatorias %>
+    </p>    
+  </div>
+</div>
+  <br>
+
+  <div class="container">
+    <div class="coluna-12">
+      <strong>Título e Descrição</strong>
+      <p>
+        <%= @project.titulo %>
+      </p>  
+      <p>
+        <%= @project.descricao %>
+      </p>  
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="coluna-12">
+      <strong>Históricos do Projeto</strong><br>
+      
+         <% @HistoricalProject.each do |historical_project| %>
+
+            <div class="comment">
+              <div class="comment-content">
+                <h1><%= historical_project.user_id_admin %></h1><span class="data_historico"><%= historical_project.data_criacao.to_time.strftime("%d/%m/%Y") %></span>
+                <p><%= historical_project.descricao %></p>
+              </div>
+            </div>
+
+        <% end %>      
+    </div>
+  </div>
+
+    <div class="container">
+      <div class="coluna-12">
+        <strong>Adicionar Histórico</strong>
+          <%= form_tag "/Addhistorico" do %>
+            <%= hidden_field_tag(:id_projeto, @project.id) %>
+            <%= text_area_tag(:historico, "", size: "120x5") %>
+             <%= submit_tag("Inserir", class: "button") %>
+          <% end %> 
+      </div>
+  </div>
+
+<br>
+

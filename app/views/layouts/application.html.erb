@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gerenciador</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+ <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+  <%= csrf_meta_tags %>
+</head>
+<% if session[:id] %>
+<body>
+<% else %>
+<body class="login" >
+<% end %>
+<% if session[:id] %>
+<header class="navigation" role="banner">
+	<nav role="navigation">	
+		<ul id="menu" class="navigation-menu show">
+			<%#=request.url%>
+			<li class="nav-link"><%= link_to 'Home', root_path  %></li>	
+			<li class="nav-link"><%= link_to 'Projetos', projects_path %></li>	
+			<li class="nav-link"><%= link_to 'Enviar Briefing', new_project_path %></li>
+			<li class="nav-link"><%= link_to 'Ajuda', "http://www.kzulopropaganda.com.br/gerenciamentojobs/ajuda/manual.pdf",:target => "_blank" %></li>
+			<li class="nav-link"><%= link_to 'sair', sair_path  %></li>	
+
+		</ul>
+	</nav>	
+	<span class="txt_menu">Olá <%=session[:nome_contato]%> seja bem vindo(a)!</span>
+</header>
+<% end %>
+<% if notice %>
+	<p id="notice" class="flash-success"><%= notice %></p>
+<% end %>
+<!--<div class="wrapper-for-content-outside-of-footer">
+   Uncomment this whole section for a sticky footer. The content of the page should be inside of this .wrapper-for-content-outside-of-footer
+</div>-->
+
+<%= yield %>
+<br>
+<% if session[:id] %>
+<div id="footer">
+	<div id="footer-left">
+	&copy; Copyright Kzulo Propaganda <%= link_to 'www.kzulo.com.br',"http://www.kzulopropaganda.com.br/",:target => "_blank" %>.Todos os dereitos reservados</div>
+</div>
+<%end%>
+<script type="text/javascript">
+	<%= yield :js %>
+</script>
+
+</body>
+</html>

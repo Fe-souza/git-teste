@@ -1,0 +1,51 @@
+<h1>Listing contatos_clientes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cod cliente</th>
+      <th>Ddd tel 1</th>
+      <th>Tel 1</th>
+      <th>Ddd tel 2</th>
+      <th>Tel 2</th>
+      <th>Ddd tel 3</th>
+      <th>Tel 3</th>
+      <th>Nome contato</th>
+      <th>Cargo contato</th>
+      <th>Email contato</th>
+      <th>Senha</th>
+      <th>Data criacao</th>
+      <th>Status</th>
+      <th>Last update</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contatos_clientes.each do |contatos_cliente| %>
+      <tr>
+        <td><%= contatos_cliente.cod_cliente %></td>
+        <td><%= contatos_cliente.ddd_tel_1 %></td>
+        <td><%= contatos_cliente.tel_1 %></td>
+        <td><%= contatos_cliente.ddd_tel_2 %></td>
+        <td><%= contatos_cliente.tel_2 %></td>
+        <td><%= contatos_cliente.ddd_tel_3 %></td>
+        <td><%= contatos_cliente.tel_3 %></td>
+        <td><%= contatos_cliente.nome_contato %></td>
+        <td><%= contatos_cliente.cargo_contato %></td>
+        <td><%= contatos_cliente.email_contato %></td>
+        <td><%= contatos_cliente.senha %></td>
+        <td><%= contatos_cliente.data_criacao %></td>
+        <td><%= contatos_cliente.status %></td>
+        <td><%= contatos_cliente.last_update %></td>
+        <td><%= link_to 'Show', contatos_cliente %></td>
+        <td><%= link_to 'Edit', edit_contatos_cliente_path(contatos_cliente) %></td>
+        <td><%= link_to 'Destroy', contatos_cliente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contatos cliente', new_contatos_cliente_path %>

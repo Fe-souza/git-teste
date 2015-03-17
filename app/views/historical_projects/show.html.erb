@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id projeto:</strong>
+  <%= @historical_project.id_projeto %>
+</p>
+
+<p>
+  <strong>User id admin:</strong>
+  <%= @historical_project.user_id_admin %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @historical_project.tipo %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @historical_project.descricao %>
+</p>
+
+<p>
+  <strong>Visivel cliente:</strong>
+  <%= @historical_project.visivel_cliente %>
+</p>
+
+<p>
+  <strong>Inserido cliente:</strong>
+  <%= @historical_project.inserido_cliente %>
+</p>
+
+<p>
+  <strong>Data criacao:</strong>
+  <%= @historical_project.data_criacao %>
+</p>
+
+<%= link_to 'Edit', edit_historical_project_path(@historical_project) %> |
+<%= link_to 'Back', historical_projects_path %>

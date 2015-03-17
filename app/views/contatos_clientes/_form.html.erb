@@ -1,0 +1,73 @@
+<%= form_for(@contatos_cliente) do |f| %>
+  <% if @contatos_cliente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contatos_cliente.errors.count, "error") %> prohibited this contatos_cliente from being saved:</h2>
+
+      <ul>
+      <% @contatos_cliente.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cod_cliente %><br>
+    <%= f.number_field :cod_cliente %>
+  </div>
+  <div class="field">
+    <%= f.label :ddd_tel_1 %><br>
+    <%= f.text_field :ddd_tel_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :tel_1 %><br>
+    <%= f.text_field :tel_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :ddd_tel_2 %><br>
+    <%= f.text_field :ddd_tel_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :tel_2 %><br>
+    <%= f.text_field :tel_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :ddd_tel_3 %><br>
+    <%= f.text_field :ddd_tel_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :tel_3 %><br>
+    <%= f.text_field :tel_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :nome_contato %><br>
+    <%= f.text_field :nome_contato %>
+  </div>
+  <div class="field">
+    <%= f.label :cargo_contato %><br>
+    <%= f.text_field :cargo_contato %>
+  </div>
+  <div class="field">
+    <%= f.label :email_contato %><br>
+    <%= f.text_field :email_contato %>
+  </div>
+  <div class="field">
+    <%= f.label :senha %><br>
+    <%= f.text_field :senha %>
+  </div>
+  <div class="field">
+    <%= f.label :data_criacao %><br>
+    <%= f.date_select :data_criacao %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.check_box :status %>
+  </div>
+  <div class="field">
+    <%= f.label :last_update %><br>
+    <%= f.date_select :last_update %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

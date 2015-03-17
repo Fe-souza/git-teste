@@ -1,0 +1,194 @@
+<%= form_for(@project, html: {multipart: true,:name =>'briefing'}) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+     
+    <div class="container">
+      <table width="98%" border="0" cellspacing="0" cellpadding="0" class="tbl_briefing">
+        <tr class="linha_topico_tabela">
+          <th width="2%" align="left">&nbsp;</th>
+          <th width="49%" height="30" align="left"> <%= f.label :solicitante %><br></th>
+          <th width="49%" height="30" align="left"></th>
+          </tr>
+        <tr>
+          <td width="2%" height="45">&nbsp;</td>
+          <td width="49%" height="45"><%= f.text_field :solicitante %></td>
+          <td width="49%" height="45">
+          </td>
+        </tr>
+        <tr class="linha_topico_tabela">
+          <th width="2%" align="left">&nbsp;</th>
+          <th width="49%" height="30" align="left"><%= f.label :titulo %></th>
+          <th width="49%" height="30" align="left"><%= f.label :data_prazo %></th>
+        </tr>
+        <tr>
+          <td width="2%" height="45">&nbsp;</td>
+          <td width="49%" height="45"> <%= f.text_field :titulo %></td>
+          <td width="49%" height="45"><%= f.text_field :data_prazo, :class =>"datepicker" %></td>
+        </tr>              
+        <tr class="linha_topico_tabela">
+          <th width="2%" align="left">&nbsp;</th>
+          <th width="49%" height="30" align="left"> <%= f.label :id_categoria %></th>
+          <th width="49%" height="30" align="left"><%= f.label :id_sub_categoria %></th>
+        </tr>
+        <tr>
+          <td width="2%" height="45">&nbsp;</td>
+          <td width="49%" height="45">
+             <%= collection_select(:project, :id_categoria,Category.order(:nome_categoria),:id_categoria, :nome_categoria, {},
+        {:data => {  :remote => true,
+                    :url => url_for(:controller => "projects", 
+                                    :action => "ListSubCategory")
+                }
+        }) %>
+          </td>
+          <td width="49%" height="45">
+            <%#= collection_select :id_sub_categoria, @nada, :id, :name, {:prompt => "Select a Contact"}, {:class=>"subcat_selection"} %>
+            <%= select(:project, :id_sub_categoria, [['Selecione a Categoria', 1]]) %>
+          </td>
+        </tr>
+        <tr class="linha_topico_tabela">
+          <th width="2%" align="left">&nbsp;</th>
+          <th width="49%" height="30" align="left"> <%= f.label :veiculo %></th>
+          <th width="49%" height="30" align="left"> <%= f.label :formato %></th>
+        </tr>
+        <tr>
+          <td height="45" align="left">&nbsp;</td>
+          <td height="45" align="left"><%= f.text_field :veiculo %></td>
+          <td height="45" align="left">
+              <%= select(:project, :formato,[['Selecione', ''],['A4 - Paisagem', 'A4 - Paisagem'],['A4 - Retrato', 'A4 - Retrato'],['A3 - Paisagem', 'A3 - Paisagem'],['A3 - Retrato', 'A3 - Retrato'],['1/4 pág ou menor', '1/4 pág ou menor'],['1/2 pág', '1/2 pág'],['Página Inteira', 'Página Inteira'],['Página Dupla', 'Página Dupla'],['Outros', 'Outros']],{},
+        {:onchange =>"VerificaFormato(this.value)" }) %>
+              <span id="campo_formato_outro" style="display:none"><%= f.text_field :formato_outro %></span>  
+
+
+              <br>
+              <span id="formato2" style="display:none"><%= select(:project, :formato2,[['Selecione', ''],['A4 - Paisagem', 'A4 - Paisagem'],['A4 - Retrato', 'A4 - Retrato'],['A3 - Paisagem', 'A3 - Paisagem'],['A3 - Retrato', 'A3 - Retrato'],['1/4 pág ou menor', '1/4 pág ou menor'],['1/2 pág', '1/2 pág'],['Página Inteira', 'Página Inteira'],['Página Dupla', 'Página Dupla'],['Outros', 'Outros']],{},
+        {:onchange =>"VerificaFormato2(this.value)" }) %>
+              <span id="campo_formato_outro2" style="display:none"><%= f.text_field :formato_outro2 %></span> 
+            </span>            
+              <%= button_to "Adicionar outro formato", '', :method => "get", :onclick =>"addFormato(this.value)", :id=>"add_outro_formato"  %><br>
+
+          </td>
+        </tr>
+        <tr class="linha_topico_tabela">
+          <th width="2%" align="left">&nbsp;</th>
+          <th width="49%" height="30" align="left"><%= f.label :linguagem %></th>
+          <th width="49%" height="30" align="left"> <%= f.label :objetivo %></th>
+          </tr>
+        <tr>
+          <td align="left" valign="top">&nbsp;</td>
+          <td align="left" valign="top">
+
+              <%= f.radio_button :linguagem,'Institucional',:checked => true,'data-name'=>'Institucional' ,:class => "opt_linguagem" %><%= f.label "lbl_linguagem",'Institucional'%><br>
+
+              <%= f.radio_button :linguagem,'Produto', :checked => false,'data-name'=>'Produto',:class => "opt_linguagem" %><%= f.label "lbl_linguagem",'Produto'%><br>
+
+              <%= f.radio_button :linguagem,'Promocional', :checked => false,'data-name'=>'Promocional',:class => "opt_linguagem" %><%= f.label "lbl_linguagem",'Promocional'%><br>
+
+              <%= f.radio_button :linguagem,'Serviço', :checked => false, 'data-name'=>'Serviço',:class => "opt_linguagem" %> <%= f.label "lbl_linguagem",'Serviço'%><br>
+              <%= f.radio_button :linguagem,'Outros', :checked => false, 'data-name'=>'Outros',:class => "opt_linguagem" %> <%= f.label "lbl_linguagem",'Outros'%><br>
+
+               
+          </td>
+
+          <td align="left" valign="top">
+              
+              <%= f.check_box :objetivo,{:multiple => true}, 'Aumento de Vendas',nil %><%= f.label "objetivo_aumento_de_vendas",'Aumento de Vendas'%><br>
+              <%= f.check_box :objetivo,{:multiple => true}, 'Divulgação',nil %><%= f.label "objetivo_divulgao",'Divulgação'%><br>
+              <%= f.check_box :objetivo,{:multiple => true}, 'Fortalecimento da Marca',nil %><%= f.label "objetivo_fortalecimento_da_marca",'Fortalecimento da Marca'%><br>
+              <%= f.check_box :objetivo,{:multiple => true}, 'Sazonalidade',nil %><%= f.label "objetivo_sazonalidade",'Sazonalidade'%><br>
+              <%= f.check_box :objetivo,{:multiple => true}, 'Valorização da Imagem',nil %><%= f.label "objetivo_valorizao_da_imagem",'Valorização da Imagem'%><br>
+          </td>
+        </tr>  
+        <tr class="linha_topico_tabela">
+          <th width="2%" align="left">&nbsp;</th>
+          <th width="49%" height="30" align="left"><%= f.label :publico_alvo %></th>
+          <th width="49%" height="30" align="left"><%= f.label :inf_obrigatorias %></th>
+          </tr>
+        <tr>
+          <td align="left" valign="top">&nbsp;</td>
+          <td align="left" valign="top">
+              <%= f.check_box :publico_alvo,{:multiple => true},'Consumidor Final' ,nil%><%= f.label "publico_alvo_consumidor_final",'Consumidor Final'%><br>
+              <%= f.check_box :publico_alvo,{:multiple => true},'Técnicos',nil %><%= f.label "publico_alvo_tcnicos",'Técnicos'%><br>
+              <%= f.check_box :publico_alvo,{:multiple => true},'Vendedores' ,nil%><%= f.label "publico_alvo_vendedores",'Vendedores'%><br>
+              <%= f.check_box :publico_alvo,{:multiple => true}, 'Prestadores de Serviços',nil %><%= f.label "publico_alvo_prestadores_de_servios",' Prestadores de Serviços'%><br>
+              <%= f.check_box :publico_alvo,{:multiple => true}, 'Colaboradores',nil %><%= f.label "publico_alvo_colaboradores",'Colaboradores'%><br>
+              <%= f.check_box :publico_alvo,{:multiple => true}, 'Compradores',nil %><%= f.label "publico_alvo_compradores",'Compradores '%><br>
+         </td>
+          <td align="left" valign="top">
+              <%= f.check_box :inf_obrigatorias  ,{:onchange => "Chamar_upload('selo_qualidade')",:multiple => true},'Selo de Qualidade',nil %><%= f.label "inf_obrigatorias_selo_de_qualidade",'Selo de Qualidade'%>
+              <%= f.file_field :img , class: "link_upload" ,id:"upload_selo_qualidade"%><br>
+             
+              <%= f.check_box :inf_obrigatorias ,{:onchange => "Chamar_upload('packshot')",:multiple => true},'Packshot de Produtos',nil %><%= f.label "inf_obrigatorias_packshot_de_produtos",'Packshot de Produtos'%>
+              <%= f.file_field :image_packshot , class: "link_upload" ,id:"upload_packshot"%><br>
+             
+              <%= f.check_box :inf_obrigatorias ,{:multiple => true},'Endereço',nil %><%= f.label "inf_obrigatorias_endereo",'Endereço'%><br>
+             
+              <%= f.check_box :inf_obrigatorias ,{:multiple => true}, 'Email',nil%><%= f.label "inf_obrigatorias_email",'Email'%><br>
+             
+              <%= f.check_box :inf_obrigatorias ,{:multiple => true},'Telefone',nil %><%= f.label "inf_obrigatorias_telefone",'Telefone'%><br>
+             
+              <%= f.check_box :inf_obrigatorias ,{:multiple => true},'Site' ,nil%><%= f.label "inf_obrigatorias_site",'Site'%><br>
+             
+              <%= f.check_box :inf_obrigatorias ,{:onchange => "Chamar_upload('selo_iso')",:multiple => true},'Selo ISO' ,nil%><%= f.label "inf_obrigatorias_selo_iso",'Selo ISO'%>
+              <%= f.file_field :image_selo_iso , class: "link_upload" ,id:"upload_selo_iso"%><br>
+             
+              <%= f.check_box :inf_obrigatorias ,{:onchange => "Chamar_upload('outros_selos')",:multiple => true},'Outros Selos',nil %><%= f.label "inf_obrigatorias_outros_selos",'Outros Selos'%>
+              <%= f.file_field :image_outros_selos , class: "link_upload" ,id:"upload_outros_selos"%><br>
+          </td>
+        </tr>     
+        <tr class="linha_topico_tabela">
+          <th width="2%" align="left">&nbsp;</th>
+          <th width="49%" height="30" align="left"><%= f.label :concorrentes %></th>
+          <th width="49%" height="30" align="left"><%= f.label :descricao %></th>
+        </tr>
+        <tr>
+          <td align="left">&nbsp;</td>
+          <td align="left" valign="top">
+            <%= f.text_area :concorrentes , :size => "40x3"%>               
+          </td>
+          <td align="left" valign="top">
+            <%= f.text_area :descricao, :size => "40x3"%>
+          </td>
+        </tr>
+        <tr class="linha_topico_tabela">
+          <th width="2%" align="left" sty>&nbsp;</th>
+          <th width="49%" height="30" align="left"><%= f.label :referencia_web %></th>
+          <th width="49%" height="30" align="left"><%= f.label :img_projeto %></th>
+        </tr>              
+        <tr>
+          <td align="left">&nbsp;</td>
+          <td height="30" align="left">
+            <%= f.text_field :referencia_web %>
+          </td>
+          <td height="40" align="left" valign="middle">
+             <%= f.file_field :image_referencia %>
+          </td>
+        </tr>              
+        <tr>
+          <td align="left">&nbsp;</td>
+          <td height="60" colspan="2" align="center" valign="middle">
+            <%= f.submit "Enviar" , class:"button"  %>
+          </td>
+        </tr>
+     </table>
+    </div> 
+
+    <% end %>
+
+<% content_for :js do%> 
+  $(document).ready(function() {
+    $( ".datepicker" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+  });
+<% end%>

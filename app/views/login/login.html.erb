@@ -1,0 +1,36 @@
+
+<div id="login-holder">
+	<!-- start logo -->
+	<div id="logo-login">
+		<%= image_tag("http://www.kzulopropaganda.com.br/images/logo_kzulo.png") %>
+  	</div>
+	<!-- end logo -->	
+	<div class="clear"></div>	
+	<!--  start loginbox ................................................................................. -->
+	 <!--form method="POST" name="login_cliente" action="verifica_cliente.asps" onSubmit="return valida_login(this);"-->
+	<%= form_tag "/autenticar" do %>
+		<div id="loginbox">
+			<!--  start login-inner -->
+		<div id="login-inner">
+			<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<th width="60" align="right">E-mail </th>
+				<td><input type="text" id="email_contato" name="email_contato"/></td>
+			</tr>
+			<tr>
+				<th width="60" align="right">Senha </th>
+				<td><input type="password" id="senha" name="senha"/></td>
+			</tr>        
+			<tr>
+				<th width="60"></th>
+				<td><input type="submit" class="button" name="entrar"  /></td>
+			</tr>
+			</table>
+	        <span style="margin-left: 50px;" id="resp_login" class="erro_frm"></span>
+		</div>
+	 	<!--  end login-inner -->		
+	<% end %>
+ <!--  end loginbox -->
+
+</div>
+<%#= link_to "Login com Facebook", "/auth/facebook" %>

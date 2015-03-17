@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User id admin:</strong>
+  <%= @user_admin.user_id_admin %>
+</p>
+
+<p>
+  <strong>Nome usuario:</strong>
+  <%= @user_admin.nome_usuario %>
+</p>
+
+<p>
+  <strong>Email usuario:</strong>
+  <%= @user_admin.email_usuario %>
+</p>
+
+<p>
+  <strong>Ddd usuario:</strong>
+  <%= @user_admin.ddd_usuario %>
+</p>
+
+<p>
+  <strong>Fone usuario:</strong>
+  <%= @user_admin.fone_usuario %>
+</p>
+
+<p>
+  <strong>Chave admin:</strong>
+  <%= @user_admin.chave_admin %>
+</p>
+
+<p>
+  <strong>Perfil usuario:</strong>
+  <%= @user_admin.perfil_usuario %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @user_admin.status %>
+</p>
+
+<%= link_to 'Edit', edit_user_admin_path(@user_admin) %> |
+<%= link_to 'Back', user_admins_path %>

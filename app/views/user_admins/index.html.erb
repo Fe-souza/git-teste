@@ -1,0 +1,39 @@
+<h1>Listing user_admins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User id admin</th>
+      <th>Nome usuario</th>
+      <th>Email usuario</th>
+      <th>Ddd usuario</th>
+      <th>Fone usuario</th>
+      <th>Chave admin</th>
+      <th>Perfil usuario</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_admins.each do |user_admin| %>
+      <tr>
+        <td><%= user_admin.user_id_admin %></td>
+        <td><%= user_admin.nome_usuario %></td>
+        <td><%= user_admin.email_usuario %></td>
+        <td><%= user_admin.ddd_usuario %></td>
+        <td><%= user_admin.fone_usuario %></td>
+        <td><%= user_admin.chave_admin %></td>
+        <td><%= user_admin.perfil_usuario %></td>
+        <td><%= user_admin.status %></td>
+        <td><%= link_to 'Show', user_admin %></td>
+        <td><%= link_to 'Edit', edit_user_admin_path(user_admin) %></td>
+        <td><%= link_to 'Destroy', user_admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User admin', new_user_admin_path %>
